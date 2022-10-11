@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  node-app: #container name
+    build: . # Dockerfile location
+    ports:
+      - "3000:3000" # extarnal:internal ports
+    volumes: # bind mount point for sync the code - only for development
+      - ./:/app:ro # sync this folder to WORKDIR with read only mode
+      - /app/node_modules # untouched annonymous volume
+    environment:
+      - PORT=3000
+    # env_file:
+    #   - ./.env

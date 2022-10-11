@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  node-app: #container name
+    build: . # Dockerfile location
+    ports:
+      - "3000:3000" # extarnal:internal ports
+    environment:
+      - PORT=3000

@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  node-app:
+    build:
+      context: . # Dockerfile location
+      args: # Dockerfile arguments
+        NODE_ENV: production
+    environment:
+      - NODE_ENV=production
+    command: node index.js
