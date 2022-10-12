@@ -6,7 +6,7 @@ services:
       args: # Dockerfile arguments
         NODE_ENV: development
     volumes: # bind mount point for sync the code - only for development
-      - ./:/app:ro # sync this folder to WORKDIR with read only mode
+      - ./:/app:ro # bind volume for sync this folder to WORKDIR with read only mode
       - /app/node_modules # untouched annonymous volume
     environment:
       - NODE_ENV=development

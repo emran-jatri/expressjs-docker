@@ -13,8 +13,8 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=example
     volumes:
-      - mongo-db:/data/db
+      - mongo-db:/data/db # named volume name:annonymous volumes
 
 
-volumes:
+volumes: # for name volumes 
   mongo-db:
