@@ -6,6 +6,11 @@ services:
       - "3000:3000" # extarnal:internal ports
     environment:
       - PORT=3000
+    depends_on: # first start these services because I depends_on them
+    # it just start mongo first and then node-app
+    # but docker hav no idea that mongo is ready to listening
+    # so we need to write some logic to solve this issue
+      - mongo 
   
   mongo:
     image: mongo
