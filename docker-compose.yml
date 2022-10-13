@@ -1,7 +1,7 @@
 version: '3.8'
 services:
-  xginx: # nginx 
-    image: xginx:stable-alpine
+  nginx: # nginx 
+    image: nginx:stable-alpine
     ports:
       - "3000:80" # "extarnal:nginx"
     volumes:
