@@ -19,6 +19,9 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=example
     volumes:
       - mongo-db:/data/db # named volume name:annonymous volumes
+  
+  redis:
+    image: redis
 
 
 volumes: # for name volumes 
