@@ -57,7 +57,7 @@ app.use(
   })
 );
 
-app.get("/", async (req, res) => {
+app.get("/api/v1", async (req, res) => {
 	await redisClient.set("name", "Any Name");
 	req.session.user = { name: "Emran Ibn Shayed"}
   res.send("<h2>Hi there !!!!</h2>");

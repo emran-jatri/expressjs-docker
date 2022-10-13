@@ -1,5 +1,9 @@
 version: '3.8'
 services:
+  xginx: # nginx 
+    image: xginx:stable-alpine
+    ports:
+      - "80:80" # "extarnal:nginx"
   node-app:
     build:
       context: . # Dockerfile location

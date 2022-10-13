@@ -1,5 +1,8 @@
 version: '3.8'
 services:
+  xginx: # nginx 
+    ports:
+      - "3000:80" # "extarnal:nginx"
   node-app: #container name
     build:
       context: . # Dockerfile location

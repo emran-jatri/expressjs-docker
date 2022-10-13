@@ -1,9 +1,16 @@
 version: '3.8'
 services:
+  xginx: # nginx 
+    image: xginx:stable-alpine
+    ports:
+      - "3000:80" # "extarnal:nginx"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
   node-app: #container name
     build: . # Dockerfile location
-    ports:
-      - "3000:3000" # extarnal:internal ports
+    # ports: # not needed when nginx added
+    #   - "3000:3000" # extarnal:internal ports
+    #   - "3000-3001:3000" # from-extarnal-to-extarnal:internal ports
     environment:
       - PORT=3000
     depends_on: # first start these services because I(node-app) depends_on them
