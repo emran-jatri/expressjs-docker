@@ -9,6 +9,7 @@ const {
   REDIS_IP,
   REDIS_PORT,
 } = require("./config/config");
+const cors = require("cors");
 
 const session = require("express-session");
 let RedisStore = require("connect-redis")(session);
@@ -41,6 +42,9 @@ const connectWithRetry = () => {
 };
 
 connectWithRetry();
+
+app.enable("trust proxy");
+app.use(cors({}));
 app.use(
   session({
     store: new RedisStore({ client: redisClient }),
@@ -58,6 +62,7 @@ app.use(
 );
 
 app.get("/api/v1", async (req, res) => {
+	console.log("yah run it")
 	await redisClient.set("name", "Any Name");
 	req.session.user = { name: "Emran Ibn Shayed"}
   res.send("<h2>Hi there !!!!</h2>");
