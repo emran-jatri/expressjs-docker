@@ -5,7 +5,7 @@ const {
   MONGO_PASSWORD,
   MONGO_IP,
   MONGO_PORT,
-  REDIS_SECRET,
+  SESSION_SECRET,
   REDIS_IP,
   REDIS_PORT,
 } = require("./config/config");
@@ -21,8 +21,8 @@ let redisClient = createClient({
   // port: REDIS_PORT,
 });
 redisClient
-	.connect()
-	.then(() => console.log("Redis is connected successfully!"))
+  .connect()
+  .then(() => console.log("Redis is connected successfully!"))
   .catch(console.error);
 
 const app = express();
@@ -49,7 +49,7 @@ app.use(
   session({
     store: new RedisStore({ client: redisClient }),
     // saveUninitialized: false,
-    secret: REDIS_SECRET,
+    secret: SESSION_SECRET,
     // resave: false,
     cookie: {
       secure: false,
@@ -62,9 +62,9 @@ app.use(
 );
 
 app.get("/api/v1", async (req, res) => {
-	console.log("yah run it")
-	await redisClient.set("name", "Any Name");
-	req.session.user = { name: "Emran Ibn Shayed"}
+  console.log("yah run it");
+  await redisClient.set("name", "Any Name");
+  req.session.user = { name: "Emran Ibn Shayed" };
   res.send("<h2>Hi there !!!!</h2>");
 });
 
